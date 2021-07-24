@@ -1,0 +1,62 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+  <input type="text" class="form-control" id="txtnombre" name="txtnombre" placeholder="Nombre de La Propiedad">
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Tipo de propiedad</label>
+  <input type="email" class="form-control" id="txtTipo" name="txtTipo" placeholder="casa-depto-terreno">
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Operacion</label>
+  <input type="email" class="form-control" id="txtOperacion" name"txtOperacion" placeholder="tipo de operacion">
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Superficie</label>
+  <input type="email" class="form-control" id="txtSuperficie" name="txtSuperficie" placeholder="metros cuadrados">
+</div>
+ 
+ <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Habitaciones</label>
+  <input type="number" class="form-control" id="txtHabitaciones" name="txtHabitaciones" placeholder="numero de habitaciones">
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Baños</label>
+  <input type="number" class="form-control" id="txtBannos" name="txtBannos" placeholder="numero de baños">
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Ubicacion</label>
+  <textarea class="form-control" id="txtUbicacion" name="txtUbicacion" rows="3"></textarea>
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Precio</label>
+  <input type="number" class="form-control" id="txtPrecio" name="txtPrecio" placeholder="Valor">
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+  <textarea class="form-control" id="txtDescripcion" name="txtDescripcion" rows="3"></textarea>
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Imagen</label>
+  <input type="file" class="form-control" id="imagen" name="imagen" placeholder="busca las imagenes">
+</div>
+
+</form>
+
+
+{% endblock contenido %}

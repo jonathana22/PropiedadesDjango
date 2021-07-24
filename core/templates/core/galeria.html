@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block contenido %}
+  
+<!-- Grid row -->
+<br>
+<br>
+
+<div class="gallery" id="gallery">
+{% for n in foto_galeria.all %}
+  <div class="mb-3 pics animation all 2 " class="{% if forloop.counter0 == 0 %} active {% endif %}">
+  {% if n.foto_galeria %}
+    <img class="img-fluid" src="{{n.foto_galeria.url}}" alt="">
+  {% endif %}         
+  </div>
+{% endfor %}
+</div>
+<!-- Grid row -->
+
+<!--BTN CONTACTO-->
+  <a href="{% url 'contacto' %}" class="btn btn-primary btn-lg active"  role="button" >SI TE GUSTO ESTA PROPIEDAD Y QUIERES PONERTE EN CONTACTO HAZ CLICK ACA!!</a>
+
+{% endblock contenido %}

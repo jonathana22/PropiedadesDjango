@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+<div class="contacto" id="contacto">
+<div class="column">
+        <h3>Contactanos</h3>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <div class="field half first">
+                <label for="name">Nombre</label>
+                <input name="txtnombre" id="txtnombre" type="text" placeholder="Nombre">
+            </div>
+            <div class="field half">
+                <label for="email">Email</label>
+                <input name="txtemail" id="txtemail" type="email" placeholder="Email">
+            </div>
+            <div class="field">
+                <label for="message">Mensaje</label>
+                <textarea name="txtmensaje" id="txtmensaje" rows="6"
+                    placeholder="Dejanos tu mennsaje y reserva una cita con nosotros"></textarea>
+            </div>
+            <ul class="actions">
+                <li><input value="Enviar Mensaje" class="button" type="submit"></li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+{% endblock contenido %}

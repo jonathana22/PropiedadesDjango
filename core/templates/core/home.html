@@ -1,0 +1,122 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block contenido%}
+<!-- CARROUSEL-->
+
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'core/img/inmo1.jpeg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>AGENTE PROPIEDADES</h1>
+                <p></p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'core/img/depto.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>AGENTE PROPIEDADES</h1>
+                <p></p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'core/img/casa4.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+{% comment %} -------------------------------- {% endcomment %}
+
+<div class="texto-encabezado">
+<h1>Revisa Nuestras Propiedades</h1>
+</div>
+{% load humanize %}
+<div class="propiedad">
+    {% for p in propiedades%}
+    <div class="propiedad">
+        <div class="card" style="width: 18rem;">
+            {% if p.imgane %}
+            <img src="{{p.imgane.url}}" class="card-img-top" alt="...">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{p.nombre}}</h5>
+                <p class="card-text">{{p.descripcion}}</p>
+                <p class="card-text"> Direccion: {{p.ubicacion}}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Baños {{p.banno}}</li>
+                    <li class="list-group-item">Habitaciones {{p.habitaciones}}</li>
+                    <li class="list-group-item">Superficie {{p.superficie}} mts cuadrados </li>
+                    <li class="list-group-item">Valor ${{p.precio|intcomma}} CLP</li>
+                </ul>
+                <a href="{% url 'galeria' p.id %}" class="btn btn-primary">Ir a la Galeria</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<br>
+<br>
+
+<!-- Contact -->
+<section id="contact">
+    <!-- Social -->
+    <div class="social column">
+        <h3>Quienes Somos</h3>
+        <p>Somos ... y estamos para hacer realidad tu proyecto de vida.</p>
+        <p>Escribenos dejando un mensaje aca en donde puedes agendar una reunion y construir en conjunto.</p>
+        {% comment %} <h3>Siguenos</h3>
+        <ul class="icons">
+            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+        </ul> {% endcomment %}
+    </div>
+
+    <!-- Form -->
+    <div class="column">
+        <h3>Contactanos</h3>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <div class="field half first">
+                <label for="name">Nombre</label>
+                <input name="txtnombre" id="txtnombre" type="text" placeholder="Nombre">
+            </div>
+            <div class="field half">
+                <label for="email">Email</label>
+                <input name="txtemail" id="txtemail" type="email" placeholder="Email">
+            </div>
+            <div class="field">
+                <label for="message">Mensaje</label>
+                <textarea name="txtmensaje" id="txtmensaje" rows="6"
+                    placeholder="Dejanos tu mennsaje y reserva una cita con nosotros"></textarea>
+            </div>
+            <ul class="actions">
+                <li><input value="Enviar Mensaje" class="button" type="submit"></li>
+            </ul>
+        </form>
+    </div>
+
+</section>
+{% endblock %}
